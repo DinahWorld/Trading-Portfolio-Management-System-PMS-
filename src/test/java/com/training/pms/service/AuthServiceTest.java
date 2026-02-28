@@ -1,5 +1,7 @@
 package com.training.pms.service;
 
+import com.training.pms.core.exceptions.AuthUnauthorizedException;
+import com.training.pms.core.exceptions.UserNotFoundException;
 import com.training.pms.dto.request.AuthRequest;
 import com.training.pms.dto.request.UserRequest;
 import com.training.pms.dto.response.AuthResponse;
@@ -15,7 +17,6 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.web.server.ResponseStatusException;
 
 import java.time.LocalDateTime;
 import java.util.Optional;
@@ -78,8 +79,8 @@ class AuthServiceTest {
         when(userRepository.findByUsername("alice")).thenReturn(Optional.of(new User()));
 
         assertThatThrownBy(() -> authService.register(request))
-                .isInstanceOf(ResponseStatusException.class)
-                .hasMessageContaining("409 CONFLICT");
+                .isInstanceOf(UserNotFoundException.class)
+                .hasMessageContaining("Username already exists");
 
         verify(userRepository, never()).save(org.mockito.ArgumentMatchers.any(User.class));
     }
@@ -116,8 +117,8 @@ class AuthServiceTest {
         when(passwordEncoder.matches("bad-password", "$2a$encoded")).thenReturn(false);
 
         assertThatThrownBy(() -> authService.authenticate(request))
-                .isInstanceOf(ResponseStatusException.class)
-                .hasMessageContaining("401 UNAUTHORIZED");
+                .isInstanceOf(AuthUnauthorizedException.class)
+                .hasMessageContaining("Invalid credentials");
 
         verify(jwtService, never()).generateToken(anyMap(), eq("bob"));
     }
