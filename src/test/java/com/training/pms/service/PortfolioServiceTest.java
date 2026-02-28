@@ -95,7 +95,7 @@ class PortfolioServiceTest {
                 .thenAnswer(invocation -> {
                     Instrument instrument = invocation.getArgument(0);
                     if ("US0378331005".equals(instrument.getIsin())) {
-                        return new Position(instrument, new BigDecimal("11"), new BigDecimal("103.33333333"), new BigDecimal("-794.19333363"));
+                        return new Position(instrument, new BigDecimal("11"), new BigDecimal("103.33333333"), new BigDecimal("-794.19266663"));
                     }
                     return new Position(instrument, new BigDecimal("-3"), BigDecimal.ZERO, new BigDecimal("-93.402"));
                 });
@@ -116,7 +116,7 @@ class PortfolioServiceTest {
 
         assertThat(applePosition.quantity()).isEqualByComparingTo(new BigDecimal("11"));
         assertThat(applePosition.averagePrice()).isEqualByComparingTo(new BigDecimal("103.33333333"));
-        assertThat(applePosition.unrealizedPnl()).isEqualByComparingTo(new BigDecimal("-794.19333363"));
+        assertThat(applePosition.unrealizedPnl()).isEqualByComparingTo(new BigDecimal("-794.19266663"));
 
         assertThat(teslaPosition.quantity()).isEqualByComparingTo(new BigDecimal("-3"));
         assertThat(teslaPosition.averagePrice()).isEqualByComparingTo(BigDecimal.ZERO);
