@@ -1,7 +1,7 @@
 package com.training.pms.service;
 
-import com.training.pms.dto.UserRequest;
-import com.training.pms.dto.UserResponse;
+import com.training.pms.dto.request.UserRequest;
+import com.training.pms.dto.response.UserResponse;
 import com.training.pms.mapper.UserMapper;
 import com.training.pms.model.domain.User;
 import com.training.pms.repository.UserRepository;

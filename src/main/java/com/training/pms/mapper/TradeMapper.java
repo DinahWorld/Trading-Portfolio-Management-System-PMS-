@@ -1,7 +1,7 @@
 package com.training.pms.mapper;
 
-import com.training.pms.dto.TradeRequest;
-import com.training.pms.dto.TradeResponse;
+import com.training.pms.dto.request.TradeRequest;
+import com.training.pms.dto.response.TradeResponse;
 import com.training.pms.model.domain.Trade;
 import org.mapstruct.Mapper;
 

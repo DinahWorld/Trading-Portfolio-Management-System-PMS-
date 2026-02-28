@@ -1,7 +1,7 @@
 package com.training.pms.service;
 
-import com.training.pms.dto.PortfolioRequest;
-import com.training.pms.dto.PortfolioResponse;
+import com.training.pms.dto.request.PortfolioRequest;
+import com.training.pms.dto.response.PortfolioResponse;
 import com.training.pms.mapper.PortfolioMapper;
 import com.training.pms.model.domain.Portfolio;
 import com.training.pms.model.domain.Position;

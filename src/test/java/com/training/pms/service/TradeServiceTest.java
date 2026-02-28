@@ -1,7 +1,7 @@
 package com.training.pms.service;
 
-import com.training.pms.dto.TradeRequest;
-import com.training.pms.dto.TradeResponse;
+import com.training.pms.dto.request.TradeRequest;
+import com.training.pms.dto.response.TradeResponse;
 import com.training.pms.mapper.TradeMapper;
 import com.training.pms.model.domain.Trade;
 import com.training.pms.model.enums.Currency;

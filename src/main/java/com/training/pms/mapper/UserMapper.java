@@ -1,7 +1,7 @@
 package com.training.pms.mapper;
 
-import com.training.pms.dto.UserRequest;
-import com.training.pms.dto.UserResponse;
+import com.training.pms.dto.request.UserRequest;
+import com.training.pms.dto.response.UserResponse;
 import com.training.pms.model.domain.User;
 import org.mapstruct.Mapper;
 

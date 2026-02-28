@@ -1,7 +1,7 @@
 package com.training.pms.service;
 
-import com.training.pms.dto.PortfolioRequest;
-import com.training.pms.dto.PortfolioResponse;
+import com.training.pms.dto.request.PortfolioRequest;
+import com.training.pms.dto.response.PortfolioResponse;
 import com.training.pms.mapper.PortfolioMapper;
 import com.training.pms.model.domain.Instrument;
 import com.training.pms.model.domain.Portfolio;
@@ -26,6 +26,7 @@ import java.util.Set;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.ArgumentMatchers.anySet;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
@@ -91,7 +92,7 @@ class PortfolioServiceTest {
                 .build();
 
         when(repository.findByUserId(userId)).thenReturn(Optional.of(portfolio));
-        when(calculator.calculatePosition(any(Instrument.class), any(Set.class)))
+        when(calculator.calculatePosition(any(Instrument.class), anySet()))
                 .thenAnswer(invocation -> {
                     Instrument instrument = invocation.getArgument(0);
                     if ("US0378331005".equals(instrument.getIsin())) {
@@ -153,7 +154,7 @@ class PortfolioServiceTest {
                 .build();
 
         when(repository.findByUserId(userId)).thenReturn(Optional.of(portfolio));
-        when(calculator.calculatePosition(any(Instrument.class), any(Set.class)))
+        when(calculator.calculatePosition(any(Instrument.class), anySet()))
                 .thenAnswer(invocation -> {
                     Instrument instrument = invocation.getArgument(0);
                     if ("US0378331005".equals(instrument.getIsin())) {

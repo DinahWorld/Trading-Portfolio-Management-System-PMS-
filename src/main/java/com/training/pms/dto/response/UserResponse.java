@@ -1,4 +1,4 @@
-package com.training.pms.dto;
+package com.training.pms.dto.response;
 
 import java.time.LocalDateTime;
 

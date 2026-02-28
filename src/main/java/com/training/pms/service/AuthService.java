@@ -1,18 +1,18 @@
 package com.training.pms.service;
 
-import com.training.pms.dto.AuthRequest;
-import com.training.pms.dto.AuthResponse;
-import com.training.pms.dto.UserRequest;
-import com.training.pms.dto.UserResponse;
+import com.training.pms.core.exceptions.AuthUnauthorizedException;
+import com.training.pms.core.exceptions.UserNotFoundException;
+import com.training.pms.dto.request.AuthRequest;
+import com.training.pms.dto.request.UserRequest;
+import com.training.pms.dto.response.AuthResponse;
+import com.training.pms.dto.response.UserResponse;
 import com.training.pms.mapper.UserMapper;
 import com.training.pms.model.domain.User;
 import com.training.pms.model.enums.Role;
 import com.training.pms.repository.UserRepository;
-import org.springframework.http.HttpStatus;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.web.server.ResponseStatusException;
 
 import java.util.Map;
 
@@ -34,10 +34,10 @@ public class AuthService {
     @Transactional
     public UserResponse register(UserRequest userRequest) {
         if (userRepository.findByUsername(userRequest.username()).isPresent()) {
-            throw new ResponseStatusException(HttpStatus.CONFLICT, "Username already exists");
+            throw new UserNotFoundException("Username already exists");
         }
         if (userRepository.findByEmail(userRequest.email()).isPresent()) {
-            throw new ResponseStatusException(HttpStatus.CONFLICT, "Email already exists");
+            throw new UserNotFoundException("Email already exists");
         }
 
         User user = userMapper.toEntity(userRequest);
@@ -51,10 +51,10 @@ public class AuthService {
     @Transactional
     public AuthResponse authenticate(AuthRequest authRequest) {
         User user = userRepository.findByUsername(authRequest.username())
-                .orElseThrow(() -> new ResponseStatusException(HttpStatus.UNAUTHORIZED, "Invalid credentials"));
+                .orElseThrow(() -> new AuthUnauthorizedException("Invalid credentials"));
 
         if (!passwordEncoder.matches(authRequest.password(), user.getPassword())) {
-            throw new ResponseStatusException(HttpStatus.UNAUTHORIZED, "Invalid credentials");
+            throw new AuthUnauthorizedException("Invalid credentials");
         }
 
         String token = jwtService.generateToken(Map.of("role", String.valueOf(user.getRole())), user.getUsername());

@@ -1,7 +1,7 @@
 package com.training.pms.service;
 
-import com.training.pms.dto.InstrumentRequest;
-import com.training.pms.dto.InstrumentResponse;
+import com.training.pms.dto.request.InstrumentRequest;
+import com.training.pms.dto.response.InstrumentResponse;
 import com.training.pms.mapper.InstrumentMapper;
 import com.training.pms.model.domain.Instrument;
 import com.training.pms.repository.InstrumentRepository;

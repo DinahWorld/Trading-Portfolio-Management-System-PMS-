@@ -1,9 +1,9 @@
 package com.training.pms.service;
 
-import com.training.pms.dto.AuthRequest;
-import com.training.pms.dto.AuthResponse;
-import com.training.pms.dto.UserRequest;
-import com.training.pms.dto.UserResponse;
+import com.training.pms.dto.request.AuthRequest;
+import com.training.pms.dto.request.UserRequest;
+import com.training.pms.dto.response.AuthResponse;
+import com.training.pms.dto.response.UserResponse;
 import com.training.pms.mapper.UserMapper;
 import com.training.pms.model.domain.User;
 import com.training.pms.model.enums.Role;
