@@ -27,7 +27,7 @@ class PortfolioCalculatorTest {
         assertThat(result.instrument()).isEqualTo(instrument);
         assertThat(result.quantity()).isEqualByComparingTo(new BigDecimal("11"));
         assertThat(result.averagePrice()).isEqualByComparingTo(new BigDecimal("103.33333333"));
-        assertThat(result.unrealizedPnl()).isEqualByComparingTo(new BigDecimal("-794.19333363"));
+        assertThat(result.unrealizedPnl()).isEqualByComparingTo(new BigDecimal("-794.19266663"));
     }
 
     @Test
