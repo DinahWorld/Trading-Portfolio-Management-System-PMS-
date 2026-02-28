@@ -1,4 +1,4 @@
-package com.training.pms.service.portfolio.dto;
+package com.training.pms.dto;
 
 import com.training.pms.model.enums.Currency;
 

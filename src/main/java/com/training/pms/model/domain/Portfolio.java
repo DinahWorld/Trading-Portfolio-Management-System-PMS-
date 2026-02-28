@@ -8,8 +8,8 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Data
@@ -32,7 +32,7 @@ public class Portfolio {
     private User user;
 
     @OneToMany(mappedBy = "portfolio")
-    private List<Trade> trades = new ArrayList<>();
+    private Set<Trade> trades = new HashSet<>();
 
     private LocalDateTime createdAt;
 

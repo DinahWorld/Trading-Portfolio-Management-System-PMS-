@@ -1,11 +1,13 @@
 package com.training.pms.model.domain;
 
+import com.training.pms.model.enums.Role;
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
 @NoArgsConstructor
 @Data
@@ -26,8 +28,10 @@ public class User {
 
     private LocalDateTime updatedAt;
 
+    private Role role;
+
     @OneToMany(mappedBy = "user")
-    private List<Portfolio> portfolios;
+    private Set<Portfolio> portfolios = new HashSet<>();
 
     @PrePersist
     protected void onCreate() {

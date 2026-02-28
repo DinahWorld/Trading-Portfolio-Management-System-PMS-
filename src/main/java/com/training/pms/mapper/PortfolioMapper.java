@@ -1,12 +1,12 @@
-package com.training.pms.service.portfolio.mapper;
+package com.training.pms.mapper;
 
+import com.training.pms.dto.PortfolioRequest;
+import com.training.pms.dto.PortfolioResponse;
 import com.training.pms.model.domain.Portfolio;
-import com.training.pms.service.portfolio.dto.PortfolioRequest;
-import com.training.pms.service.portfolio.dto.PortfolioResponse;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 
-@Mapper
+@Mapper(componentModel = "spring")
 public interface PortfolioMapper {
     @Mapping(target = "username", source = "user.username")
     PortfolioResponse toResponse(Portfolio portfolio);

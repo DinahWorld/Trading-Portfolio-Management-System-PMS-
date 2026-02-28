@@ -6,6 +6,8 @@ import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.time.LocalDateTime;
+
 @Entity
 @Data
 @NoArgsConstructor
@@ -19,4 +21,6 @@ public class Instrument {
     @Enumerated(EnumType.STRING)
     private InstrumentType type;
     private Currency currency;
+    private LocalDateTime createdAt;
+    private LocalDateTime updatedAt;
 }
